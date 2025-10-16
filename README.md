@@ -6,7 +6,8 @@ This project is a simple RESTful API built for the HNG Internship Stage 0 backen
 
 ## 📌 Features
 
-- GET `/me` endpoint
+- GET `/` endpoint for status message
+- GET `/me` endpoint for profile information
 - Dynamic cat fact from [Cat Facts API](https://catfact.ninja/fact)
 - Current UTC timestamp in ISO 8601 format
 - Graceful error handling and fallback messaging
@@ -28,8 +29,8 @@ This project is a simple RESTful API built for the HNG Internship Stage 0 backen
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/hng-stage0-profile-api.git
-cd hng-stage0-profile-api
+git clone https://github.com/911Dev-Niyi/Hng-internship-projects.git
+cd hng/stage0/
 2. Install Dependencies
 bash
 npm install
@@ -41,18 +42,15 @@ MY_STACK=Your Stack
 4. Run the Server Locally (Optional)
 bash
 node server.js
-5. Test the Endpoint
+🧪 Testing the Endpoint
 🔹 Local Testing (before deployment)
 bash
 curl http://127.0.0.1:3000/me
 🔹 Hosted Testing (after deployment)
-Replace with your hosted URL:
-
 bash
-curl https://your-hosted-url.com/me
-Or visit in your browser:
+curl https://niyi-hnginternship-stage0project.pxxl.click/me
+Or visit in your browser: https://niyi-hnginternship-stage0project.pxxl.click/me
 
-https://your-hosted-url.com/me
 📦 Dependencies
 express — Web framework
 
@@ -61,6 +59,8 @@ axios — HTTP client for external API calls
 dotenv — Loads environment variables
 
 cors — Enables cross-origin requests
+
+express-rate-limit — Optional rate limiting
 
 ✅ Sample Response
 json
@@ -74,9 +74,5 @@ json
   "timestamp": "2025-10-16T00:28:43.585Z",
   "fact": "Cats purr at a frequency that promotes healing."
 }
-```
-
 📣 Author
-Adeniyi Anjorin 
-Backend Developer
-📧 anjorinadeniyi1811@gmail.com
+Adeniyi Anjorin Backend Developer 📧 anjorinadeniyi1811@gmail.com
