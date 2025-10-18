@@ -24,7 +24,7 @@ app.get('/me', limiter, async (req, res) => {
         const catFact = catRes.data.fact;
 
         res.status(200).json({
-            status: "successs",
+            status: "success",
             user: {
                 name: process.env.MY_NAME,
                 email: process.env.MY_EMAIL,
