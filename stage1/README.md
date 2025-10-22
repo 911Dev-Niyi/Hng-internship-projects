@@ -69,5 +69,20 @@ express — Web framework
 
 cors — Enables cross-origin requests
 ```
+---
+
+## 🌐 Live Deployment
+
+You can test the live API here:  
+🔗 [https://hng-internship-projects-production.up.railway.app](https://hng-internship-projects-production.up.railway.app)
+
+### 🔍 Sample Endpoints
+
+- `POST /strings` → Analyze a string
+- `GET /strings/{value}` → Retrieve analysis
+- `GET /strings?is_palindrome=true` → Filter by query
+- `GET /strings/filter-by-natural-language?query=palindromic` → Filter by natural language
+- `DELETE /strings/{value}` → Delete a string
+
  ### 📣 Author
 Adeniyi Anjorin Backend Developer 📧 anjorinadeniyi1811@gmail.com
