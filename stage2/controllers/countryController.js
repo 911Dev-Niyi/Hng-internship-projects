@@ -106,13 +106,21 @@ export const refreshCountries = async (req, res) => {
       });
     }
 
-    // Batch insert (mysql2 supports VALUES ? with nested arrays)
+    // Insert query 
     const insertQuery = `
-      INSERT INTO countries
-        (name, capital, region, population, currency_code, exchange_rate, estimated_gdp, flag_url, last_refreshed_at)
-      VALUES ?
-    `;
-    await db.query(insertQuery, [values]);
+  INSERT INTO countries (
+    name, capital, region, population,
+    currency_code, exchange_rate, estimated_gdp,
+    flag_url, last_refreshed_at
+  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+`;
+
+for (const row of values) {
+  await db.query(insertQuery, row);
+}
+const [[{ total }]] = await db.query("SELECT COUNT(*) AS total FROM countries");
+console.log("Inserted countries count:", total);
+
 
     return res.status(200).json({
       message: "Countries refreshed and cached successfully",
@@ -217,7 +225,7 @@ export const getCountryByName = async (req, res) => {
 
     return res.status(200).json(rows[0]);
   } catch (err) {
-    console.error(" GET /countires/:name failed:", err);
+    console.error(" GET /countries/:name failed:", err);
     return res.status(500).json({ error: "Internal server error" });
   }
 };
@@ -236,7 +244,7 @@ export const deleteCountryByName = async (req, res) => {
       [name]
     );
     if (result.affectedRows === 0) {
-      return res.status(404).json({ error: " Country not found" });
+      return res.status(404).json({ error: "Country not found" });
     }
 
     return res
