@@ -98,7 +98,7 @@ axios — External API calls
 dotenv — Environment config
 
 🌐 Live Deployment
-You can test the live API here: 🔗 (deployment link to be added)
+You can test the live API here: 🔗 https://niyi-hnginternship-stage2-production.up.railway.app
 
 📣 Author
 Adeniyi Anjorin Backend Developer 📧 anjorinadeniyi1811@gmail.com
