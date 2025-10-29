@@ -22,8 +22,28 @@ const fetchWithRetry = async (url, retries = 3, delayMs = 500) => {
   }
 };
 
+const ensureCountriesTableExists = async (db) => {
+  await db.query(`
+    CREATE TABLE IF NOT EXISTS countries (
+      id INT PRIMARY KEY AUTO_INCREMENT,
+      name VARCHAR(100) NOT NULL,
+      capital VARCHAR(100),
+      region VARCHAR(100),
+      population BIGINT,
+      currency_code VARCHAR(10),
+      exchange_rate DECIMAL(10, 4),
+      estimated_gdp DECIMAL(15, 2),
+      flag_url TEXT,
+      last_refreshed_at DATETIME
+    );
+  `);
+};
+
+
 export const refreshCountries = async (req, res) => {
   try {
+
+    await ensureCountriesTableExists(db);
     // Parallel fetch with retry
     const [countriesData, ratesData] = await Promise.all([
       fetchWithRetry(
