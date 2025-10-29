@@ -196,10 +196,7 @@ export const getCountries = async (req, res) => {
 
     const [rows] = await db.query(query, params);
 
-    res.status(200).json({
-      count: rows.length,
-      results: rows,
-    });
+    res.status(200).json(rows);
   } catch (err) {
     console.error("GET /countries failed:", err);
     res.status(500).json({ error: "Internal server error" });
